@@ -1,4 +1,123 @@
-h1 {
-  color: rgb(255, 160, 231);
-  text-align: center;
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background: #222;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu a {
+    margin-left: 20px;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #4CAF50;
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 10%;
+    background: white;
+    flex-wrap: wrap;
+}
+
+.hero-texto {
+    flex: 1 1 400px;
+}
+
+.hero-texto h1 {
+    font-size: 2.5rem;
+}
+
+.hero-texto h1 span {
+    color: #4CAF50;
+}
+
+.hero-texto p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.boton {
+    background: #4CAF50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.boton:hover {
+    background: #45a049;
+}
+
+.hero-imagen {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.hero-imagen img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Contenido general */
+.contenido {
+    padding: 4rem 10%;
+    background: #fff;
+}
+
+.proyectos .proyecto {
+    background: #f9f9f9;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-left: 4px solid #4CAF50;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #222;
+    color: #ccc;
+    margin-top:
 }
