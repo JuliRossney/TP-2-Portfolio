@@ -1,123 +1,233 @@
-/* Reset y base */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
+/*BODY*/
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Poppins', sans-serif; 
+    color: #000000;
+    margin: 0; 
+    padding-top: 2rem; 
+    box-sizing: border-box;
+    background-color: #ffd6ef;
 }
 
-a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-/* Header */
-header {
-    background: #222;
-    color: white;
+/*NAVBAR*/
+.navbar {
+    background-color: #e29cc5;
+    color: rgb(255, 214, 233);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;    
+    z-index: 1000;    
 }
-
-.logo {
+body.dark-mode .navbar {
+    background-color: #394275;
+    color: rgb(255, 242, 128);
+}
+.navbar h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 1.5rem;
-    font-weight: bold;
 }
-
-.nav-menu a {
-    margin-left: 20px;
-    color: white;
-    font-weight: 500;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+}
+.navbar a {
+    color: rgb(255, 194, 222);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+body.dark-mode .navbar a {
+    color: rgb(255, 242, 128);
+    text-decoration: none;
     transition: color 0.3s;
 }
 
-.nav-menu a:hover {
-    color: #4CAF50;
+.navbar a:hover {
+    color: #ffd6ef;
 }
 
-/* Hero section */
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 120px 10%;
-    background: white;
-    flex-wrap: wrap;
-}
-
-.hero-texto {
-    flex: 1 1 400px;
-}
-
-.hero-texto h1 {
-    font-size: 2.5rem;
-}
-
-.hero-texto h1 span {
-    color: #4CAF50;
-}
-
-.hero-texto p {
+.navbar button {
+    background: none;
+    border: none;
     font-size: 1.2rem;
-    margin: 1rem 0;
-}
-
-.boton {
-    background: #4CAF50;
+    cursor: pointer;
     color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 1rem;
-    transition: background 0.3s;
 }
 
-.boton:hover {
-    background: #45a049;
+main {
+    max-width: 1200px;
+    padding: 40px 0px;
+    background-color: #ffd6ef;
+    color: #333;
+    font-family: 'Fredoka', sans-serif; 
 }
 
-.hero-imagen {
-    flex: 1 1 300px;
-    text-align: center;
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.hero-imagen img {
-    max-width: 100%;
+#sobre-mi {
+    background: linear-gradient(-45deg, 
+    #f8d7ee, /* rosa muy claro */
+    #f5b9e8, /* rosa claro medio */
+    #f3a6d5, /* rosa medio claro */
+    #f7c9ec, /* rosa pastel */
+    #f1b1e1, /* rosa suave */
+    #f9d9ed  /* rosa muy claro casi blanco */
+  );
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    padding: 170px;
+    font-family: 'Fredoka', sans-serif;
+}
+body.dark-mode #sobre-mi {
+    background: linear-gradient(-45deg, #2f355f, #3f4a8a, #5c66b3, #e0d96c);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    padding: 170px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Estilo de cada sección */
+section {
+    margin-bottom: 60px;
+}
+
+/* Títulos */
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #111;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+/* Párrafos */
+p {
+    font-size: 1,1rem;
+    line-height: 1.6;
+}
+
+/* Lista de habilidades con íconos */
+.iconos-habilidades {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+}
+
+.iconos-habilidades li {
+    font-size: 1,2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #eee;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.iconos-habilidades li:hover {
+    background-color: #ddd;
+}
+
+/* Proyectos */
+.proyecto {
+    margin-bottom: 40px;
+}
+
+.proyecto img {
+    width: 100%;
+    max-width: 600px;
     border-radius: 10px;
+    margin: 15px 0;
 }
 
-/* Contenido general */
-.contenido {
-    padding: 4rem 10%;
-    background: #fff;
+/* Botón de CV */
+.btn-cv {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.proyectos .proyecto {
-    background: #f9f9f9;
-    margin: 1rem 0;
-    padding: 1rem;
-    border-left: 4px solid #4CAF50;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+.btn-cv:hover {
+    background-color: #444;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: #222;
-    color: #ccc;
-    margin-top:
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #444;
+}
+
+/* Redes sociales */
+.redes ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.redes a {
+    text-decoration: none;
+    color: #0077b6;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.redes a:hover {
+    color: #023e8a;
+}
+
+.seccion-animada {
+    width: 100%;
+    height: 100vh;
+    animation: fondoAnimado 10s linear infinite;
+    background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+    background-size: 400% 400%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
 }

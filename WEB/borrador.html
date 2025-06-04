@@ -3,59 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Profesional</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Juli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/favicon.png" type="image/png">
+    <script>
+        function toggleModo() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 </head>
 <body>
-
     <header>
-        <div class="logo">MiNombre</div>
-        <nav class="nav-menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
+        <nav class="navbar">
+            <h1>Mi Portfolio</h1>
+            <ul>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><button id="modo-btn" onclick="toggleModo()">🌙</button></li>
+            </ul>
         </nav>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-texto">
-            <h1>¡Hola! Soy <span>Tu Nombre</span></h1>
-            <p>Desarrollador web, creativo y entusiasta del diseño.</p>
-            <a href="#proyectos" class="boton">Ver Proyectos</a>
-        </div>
-        <div class="hero-imagen">
-            <img src="img/hero.jpg" alt="Imagen de presentación">
-        </div>
-    </section>
+    <main>
+        <!-- Sección Sobre mí -->
+        <section id="sobre-mi">
+            <p> </p>
+            <p> </p>
+            <h2>Sobre mí</h2>
+            <p>¡Hola! Soy [Tu Nombre], desarrollador/a web en formación. Me apasiona crear sitios accesibles, modernos y bien diseñados. Este portfolio muestra algunos de los proyectos que realicé y cómo podés contactarme.</p>
+        </section>
 
-    <section id="sobre-mi" class="contenido">
-        <h2>Sobre mí</h2>
-        <p>
-            Soy un desarrollador enfocado en crear experiencias web fluidas y atractivas. Me especializo en HTML, CSS y JavaScript. Siempre estoy aprendiendo nuevas tecnologías para mejorar mis habilidades.
-        </p>
-    </section>
+        <!-- Sección Habilidades -->
+        <section id="habilidades">
+            <h2>Habilidades Técnicas</h2>
+            <ul class="iconos-habilidades">
+                <li><i class="fab fa-html5"></i> HTML</li>
+                <li><i class="fab fa-css3-alt"></i> CSS</li>
+                <li><i class="fab fa-js"></i> JavaScript</li>
+                <li><i class="fab fa-git-alt"></i> Git</li>
+            </ul>
+        </section>
 
-    <section id="proyectos" class="contenido proyectos">
-        <h2>Proyectos Destacados</h2>
-        <div class="proyecto">
-            <h3>Landing Page Moderna</h3>
-            <p>Una página de aterrizaje responsive con animaciones suaves y diseño limpio.</p>
-        </div>
-        <div class="proyecto">
-            <h3>Aplicación de Tareas</h3>
-            <p>To-do list hecha con JavaScript y almacenamiento local.</p>
-        </div>
-    </section>
+        <!-- Sección Proyectos -->
+        <section id="proyectos">
+            <h2>Proyectos</h2>
 
-    <section id="contacto" class="contenido">
-        <h2>Contacto</h2>
-        <p>¿Te interesa trabajar conmigo? Puedes escribirme a <a href="mailto:tuemail@example.com">tuemail@example.com</a>.</p>
-    </section>
+            <article class="proyecto">
+                <h3>Proyecto 1: Calculadora Web</h3>
+                <p>Una calculadora funcional hecha con HTML, CSS y JavaScript. Permite realizar operaciones básicas de forma simple.</p>
+                <img src="img/calculadora.png" alt="Captura de la calculadora">
+                <a href="https://github.com/usuario/calculadora" target="_blank">Ver en GitHub</a>
+            </article>
+
+            <article class="proyecto">
+                <h3>Proyecto 2: Página de Recetas</h3>
+                <p>Un sitio donde se pueden buscar recetas por ingrediente. Usé HTML, CSS y JSON.</p>
+                <img src="img/recetas.png" alt="Captura del sitio de recetas">
+                <a href="https://github.com/usuario/recetas" target="_blank">Ver en GitHub</a>
+            </article>
+        </section>
+
+        <!-- Sección CV -->
+        <section id="cv">
+            <h2>Descargá mi CV</h2>
+            <a href="CV.pdf" download class="btn-cv">Descargar CV</a>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form action="mailto:tuemail@example.com" method="POST" enctype="text/plain">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="redes">
+                <p>O también podés contactarme por:</p>
+                <ul>
+                    <li><a href="mailto:tuemail@example.com">Email</a></li>
+                    <li><a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/tuusuario" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
+<script src="modo.js"></script>
 </html>
