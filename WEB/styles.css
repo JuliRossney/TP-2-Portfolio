@@ -1,109 +1,181 @@
+/* --- GLOBAL --- */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
 }
-/*BODY*/
-body {
-    font-family: 'Poppins', sans-serif; 
-    color: #000000;
-    margin: 0; 
-    padding-top: 2rem; 
-    box-sizing: border-box;
-    background-color: #ffd6ef;
-}
 
-/*NAVBAR*/
-.navbar {
-    background-color: #e29cc5;
-    color: rgb(255, 214, 233);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
-    position: fixed;
-    top: 0;
-    width: 100%;    
-    z-index: 1000;    
-}
-body.dark-mode .navbar {
-    background-color: #394275;
-    color: rgb(255, 242, 128);
-}
-.navbar h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-}
-.navbar a {
-    color: rgb(255, 194, 222);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-body.dark-mode .navbar a {
-    color: rgb(255, 242, 128);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.navbar a:hover {
-    color: #ffd6ef;
-}
-
-.navbar button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: white;
-}
-
-main {
-    max-width: 1200px;
-    padding: 40px 0px;
-    background-color: #ffd6ef;
-    color: #333;
-    font-family: 'Fredoka', sans-serif; 
-}
-
+/* --- ANIMACIONES --- */
 @keyframes fondoAnimado {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+@keyframes gradienteMovimiento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes efecto3D {
+    0%, 100% { transform: rotateY(0deg) translateZ(0); }
+    50% { transform: rotateY(15deg) translateZ(10px); }
+}
+
+/* --- BODY --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    margin: 0;
+    padding-top: 0;
+    box-sizing: border-box;
+    background-color: #ffd6ef;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.4); /* rosa clarito translúcido */
+    backdrop-filter: blur(5px);
+    color: #5c345d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem; /* aumentado para navbar más alto */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    min-height: 80px; /* más alto */
+}
+
+body.dark-mode .navbar {
+    background-color: rgba(40, 32, 58, 0.4);
+    backdrop-filter: blur(5px);
+    color: #f9ddf2;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+
+.navbar h1 {
+    font-size: 2.2rem; /* más grande */
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* más separación */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #a7588d;
+    text-decoration: none;
+    font-size: 1.2rem; /* más grande */
+    transition: color 0.3s;
+}
+
+body.dark-mode .navbar ul li a {
+    color: #e8b9da;
+}
+
+.navbar ul li a:hover {
+    color: #e276b3;
+}
+
+body.dark-mode .navbar ul li a:hover {
+    color: #f5d1e9;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    font-size: 1.3rem; /* más grande */
+    cursor: pointer;
+    color: white;
+}
+
+
+/* --- SECCIONES --- */
+/* General */
+main {
+    background-color: #ffd6ef;
+    color: #333;
+    font-family: 'Fredoka', sans-serif;
+}
+/* Sección SOBRE MI */
 #sobre-mi {
-    background: linear-gradient(-45deg, 
-    #f8d7ee, /* rosa muy claro */
-    #f5b9e8, /* rosa claro medio */
-    #f3a6d5, /* rosa medio claro */
-    #f7c9ec, /* rosa pastel */
-    #f1b1e1, /* rosa suave */
-    #f9d9ed  /* rosa muy claro casi blanco */
-  );
+    background: linear-gradient(135deg,
+        #fce4ec, #f8bbd0, #e1bee7, #d1c4e9, #c5cae9, #e3f2fd);
     background-size: 600% 600%;
     animation: fondoAnimado 7s linear infinite;
-    padding: 170px;
+    padding: 239px;
     font-family: 'Fredoka', sans-serif;
 }
+
 body.dark-mode #sobre-mi {
-    background: linear-gradient(-45deg, #2f355f, #3f4a8a, #5c66b3, #e0d96c);
+    background: linear-gradient(135deg,
+        #3b2c35, #4a3b47, #5a3d5c, #604c73, #4f537a, #3a4660);
     background-size: 600% 600%;
     animation: fondoAnimado 7s linear infinite;
-    padding: 170px;
+}
+
+/* Sección HABILIDADES */
+#habilidades {
+    background: linear-gradient(135deg,
+        #e3f2fd, #fce4ec, #f8bbd0, #e1bee7, #d1c4e9, #c5cae9);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    padding: 239px;
     font-family: 'Fredoka', sans-serif;
 }
 
-/* Estilo de cada sección */
-section {
-    margin-bottom: 60px;
+body.dark-mode #habilidades {
+    background: linear-gradient(135deg,
+        #3a4660, #3b2c35, #4a3b47, #5a3d5c, #604c73, #4f537a);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
 }
 
-/* Títulos */
+/* Sección PROYECTOS */
+#proyectos {
+    background: linear-gradient(135deg,
+        #c5cae9, #e3f2fd, #fce4ec, #f8bbd0, #e1bee7, #d1c4e9);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    padding: 239px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body.dark-mode #proyectos {
+    background: linear-gradient(135deg,
+        #4f537a, #3a4660, #3b2c35, #4a3b47, #5a3d5c, #604c73);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+}
+
+/* Sección CONTACTO */
+#contacto {
+    background: linear-gradient(135deg,
+        #d1c4e9, #c5cae9, #e3f2fd, #fce4ec, #f8bbd0, #e1bee7);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    padding: 239px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body.dark-mode #contacto {
+    background: linear-gradient(135deg,
+        #604c73, #4f537a, #3a4660, #3b2c35, #4a3b47, #5a3d5c);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+}
+
+/* --- TIPOGRAFÍA GENERAL --- */
 h2 {
     font-size: 2rem;
     border-bottom: 2px solid #111;
@@ -112,13 +184,12 @@ h2 {
     color: #111;
 }
 
-/* Párrafos */
 p {
-    font-size: 1,1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
 }
 
-/* Lista de habilidades con íconos */
+/* --- LISTAS DE HABILIDADES --- */
 .iconos-habilidades {
     list-style: none;
     display: flex;
@@ -128,7 +199,7 @@ p {
 }
 
 .iconos-habilidades li {
-    font-size: 1,2rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -142,7 +213,7 @@ p {
     background-color: #ddd;
 }
 
-/* Proyectos */
+/* --- PROYECTOS --- */
 .proyecto {
     margin-bottom: 40px;
 }
@@ -154,7 +225,7 @@ p {
     margin: 15px 0;
 }
 
-/* Botón de CV */
+/* --- BOTÓN DE CV --- */
 .btn-cv {
     display: inline-block;
     padding: 12px 25px;
@@ -170,7 +241,7 @@ p {
     background-color: #444;
 }
 
-/* Formulario */
+/* --- FORMULARIO --- */
 form {
     display: flex;
     flex-direction: column;
@@ -200,7 +271,7 @@ button[type="submit"]:hover {
     background-color: #444;
 }
 
-/* Redes sociales */
+/* --- REDES SOCIALES --- */
 .redes ul {
     list-style: none;
     padding: 0;
@@ -219,15 +290,19 @@ button[type="submit"]:hover {
     color: #023e8a;
 }
 
-.seccion-animada {
-    width: 100%;
-    height: 100vh;
-    animation: fondoAnimado 10s linear infinite;
-    background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
-    background-size: 400% 400%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
+/* --- FUENTES Y ANIMACIÓN NOMBRE --- */
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+.nombre-animado {
+    font-family: 'Cookie', cursive;
+    font-size: 3rem !important; 
+    font-weight: 700;
+    margin-left: 0.2 !important;
+    background: linear-gradient(270deg, #a7588d, #f8bbd0, #e1bee7, #a7588d);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradienteMovimiento 8s ease infinite, efecto3D 6s ease-in-out infinite;
+    display: inline-block;
+    perspective: 1000px;
 }
