@@ -13,166 +13,235 @@ html {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 @keyframes gradienteMovimiento {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 @keyframes efecto3D {
     0%, 100% { transform: rotateY(0deg) translateZ(0); }
     50% { transform: rotateY(15deg) translateZ(10px); }
 }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Animación para "float" de círculos decorativos 
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+} */
+
+/* Animación fadeIn para mensajes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* --- BODY --- */
 body {
-    font-family: 'Poppins', sans-serif;
     color: #000000;
     margin: 0;
     padding-top: 0;
     box-sizing: border-box;
-    background-color: #ffd6ef;
+    background-color: #ffd6ef; /* fondo rosa pastel claro */
+}
+body.dark-mode {
+    background-color: #1c1c2a;
+    color: #e1bee7;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- NAVBAR --- */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.4); /* rosa clarito translúcido */
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #5c345d;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3rem; /* aumentado para navbar más alto */
+    padding: 1rem 3rem;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100%;      
+    left: 0;
+    right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    min-height: 80px; /* más alto */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-radius: 0; 
 }
-
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
 body.dark-mode .navbar {
-    background-color: rgba(40, 32, 58, 0.4);
-    backdrop-filter: blur(5px);
+    background-color: rgba(94, 88, 107, 0.5);
     color: #f9ddf2;
-    box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
 }
-
+/*-----*/
 .navbar h1 {
-    font-size: 2.2rem; /* más grande */
+    font-size: 2.2rem;
     margin: 0;
 }
-
+body.dark-mode .navbar h1 {
+    color: #f9ddf2;
+}
+/*-----*/
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 2rem; /* más separación */
+    gap: 2rem;
     margin: 0;
     padding: 0;
 }
-
+/*-----*/
 .navbar ul li a {
     color: #a7588d;
     text-decoration: none;
-    font-size: 1.2rem; /* más grande */
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
-
 body.dark-mode .navbar ul li a {
     color: #e8b9da;
 }
-
+/*-----*/
 .navbar ul li a:hover {
     color: #e276b3;
 }
-
 body.dark-mode .navbar ul li a:hover {
     color: #f5d1e9;
 }
-
+/*-----*/
 .navbar button {
     background: none;
     border: none;
-    font-size: 1.3rem; /* más grande */
+    font-size: 1.3rem;
     cursor: pointer;
-    color: white;
+    color: #5c345d;
+    transition: transform 0.3s ease;
+}
+.navbar button:hover {
+    transform: scale(1.2);
+}
+body.dark-mode .navbar button {
+    color: #f9ddf2;
 }
 
-
-/* --- SECCIONES --- */
-/* General */
+/* --- SECCIONES PRINCIPALES --- */
+/* General Main Container */
 main {
     background-color: #ffd6ef;
     color: #333;
-    font-family: 'Fredoka', sans-serif;
-}
-/* Sección SOBRE MI */
-#sobre-mi {
-    background: linear-gradient(135deg,
-        #fce4ec, #f8bbd0, #e1bee7, #d1c4e9, #c5cae9, #e3f2fd);
-    background-size: 600% 600%;
-    animation: fondoAnimado 7s linear infinite;
-    padding: 239px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* --- SECCIÓN SOBRE MI --- */
+#sobre-mi {
+    background: linear-gradient(135deg,
+        #fce4ec, #f8bbd0, #e1bee7, #d1c4e9); /* degradé suave y claro */
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    min-height: 100vh;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+#sobre-mi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop offset="20%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="50%" stop-color="%23ffffff" stop-opacity="0.05"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="100" fill="url(%23g)"/></svg>');
+    pointer-events: none;
+}
 body.dark-mode #sobre-mi {
     background: linear-gradient(135deg,
         #3b2c35, #4a3b47, #5a3d5c, #604c73, #4f537a, #3a4660);
     background-size: 600% 600%;
     animation: fondoAnimado 7s linear infinite;
+    color: #e1bee7;
 }
 
-/* Sección HABILIDADES */
-#habilidades {
-    background: linear-gradient(135deg,
-        #e3f2fd, #fce4ec, #f8bbd0, #e1bee7, #d1c4e9, #c5cae9);
-    background-size: 600% 600%;
-    animation: fondoAnimado 7s linear infinite;
-    padding: 239px;
-    font-family: 'Fredoka', sans-serif;
+
+/* --- SECCIÓN PROYECTOS --- */
+.galeria-proyectos {
+    max-height: 80vh; /* que ocupe hasta 80% del alto ventana */
+    overflow-y: auto; /* scroll vertical si sobra contenido */
+    padding: 2rem 2rem 2rem 2rem;
+    margin-top: 2rem; /* separa el título del navbar */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+body.dark-mode .galeria-proyectos {
+    background: none;
 }
 
-body.dark-mode #habilidades {
-    background: linear-gradient(135deg,
-        #3a4660, #3b2c35, #4a3b47, #5a3d5c, #604c73, #4f537a);
-    background-size: 600% 600%;
-    animation: fondoAnimado 7s linear infinite;
-}
-
-/* Sección PROYECTOS */
-#proyectos {
-    background: linear-gradient(135deg,
-        #c5cae9, #e3f2fd, #fce4ec, #f8bbd0, #e1bee7, #d1c4e9);
-    background-size: 600% 600%;
-    animation: fondoAnimado 7s linear infinite;
-    padding: 239px;
-    font-family: 'Fredoka', sans-serif;
-}
-
-body.dark-mode #proyectos {
-    background: linear-gradient(135deg,
-        #4f537a, #3a4660, #3b2c35, #4a3b47, #5a3d5c, #604c73);
-    background-size: 600% 600%;
-    animation: fondoAnimado 7s linear infinite;
-}
-
-/* Sección CONTACTO */
+/* --- SECCIÓN CONTACTO --- */
 #contacto {
     background: linear-gradient(135deg,
         #d1c4e9, #c5cae9, #e3f2fd, #fce4ec, #f8bbd0, #e1bee7);
     background-size: 600% 600%;
     animation: fondoAnimado 7s linear infinite;
-    padding: 239px;
-    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
 }
-
 body.dark-mode #contacto {
     background: linear-gradient(135deg,
         #604c73, #4f537a, #3a4660, #3b2c35, #4a3b47, #5a3d5c);
     background-size: 600% 600%;
     animation: fondoAnimado 7s linear infinite;
+    color: #e1bee7;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+}
+
+/* --- SECCIÓN PROYECTOS --- */
+#proyectos {
+    background: linear-gradient(135deg,
+        #fce4ec, #f8bbd0, #e1bee7, #d1c4e9);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+body.dark-mode #proyectos {
+    background: linear-gradient(135deg,
+        #604c73, #4f537a, #3a4660, #3b2c35, #4a3b47, #5a3d5c);
+    background-size: 600% 600%;
+    animation: fondoAnimado 7s linear infinite;
+    color: #e1bee7;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+}
+
+/* MENSAJE DE ÉXITO EN FORMULARIO */
+#mensaje-exito.oculto { display: none; }
+#mensaje-exito.visible {
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #d1c4e9;
+    border-radius: 10px;
+    text-align: center;
+    color: #5c345d;
+    font-weight: bold;
+    animation: fadeIn 1s ease;
 }
 
 /* --- TIPOGRAFÍA GENERAL --- */
@@ -185,61 +254,10 @@ h2 {
 }
 
 p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
 }
 
-/* --- LISTAS DE HABILIDADES --- */
-.iconos-habilidades {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0;
-}
-
-.iconos-habilidades li {
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #eee;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-}
-
-.iconos-habilidades li:hover {
-    background-color: #ddd;
-}
-
-/* --- PROYECTOS --- */
-.proyecto {
-    margin-bottom: 40px;
-}
-
-.proyecto img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin: 15px 0;
-}
-
-/* --- BOTÓN DE CV --- */
-.btn-cv {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #222;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn-cv:hover {
-    background-color: #444;
-}
 
 /* --- FORMULARIO --- */
 form {
@@ -248,12 +266,22 @@ form {
     gap: 15px;
     max-width: 500px;
 }
+body.dark-mode form {
+    background: rgba(70, 50, 80, 0.6);
+    border: 1px solid rgba(150, 100, 140, 0.6);
+}
 
 input, textarea {
     padding: 10px;
     border: 1px solid #aaa;
     border-radius: 5px;
     font-size: 1rem;
+}
+body.dark-mode .form-input, 
+body.dark-mode textarea {
+    background: rgba(100, 70, 110, 0.6);
+    border: 1px solid #cba9db;
+    color: #f0d7f7;
 }
 
 button[type="submit"] {
@@ -269,6 +297,101 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #444;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #a7588d;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+body.dark-mode .form-input:focus,
+body.dark-mode textarea:focus {
+    background: rgba(130, 90, 150, 0.8);
+    border-color: #e276b3;
+    color: #fff;
+}
+
+.form-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #666;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    color: #a7588d;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 0.5rem;
+    border-radius: 5px;
+}
+
+/* BOTÓN ENVIAR FORMULARIO */
+.btn-submit {
+    background: linear-gradient(45deg, #a7588d, #e276b3);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #e276b3, #a7588d);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn-submit:hover::before {
+    left: 0;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(167, 88, 141, 0.3);
 }
 
 /* --- REDES SOCIALES --- */
@@ -293,13 +416,13 @@ button[type="submit"]:hover {
 /* --- FUENTES Y ANIMACIÓN NOMBRE --- */
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .nombre-animado {
-    font-family: 'Parisienne', cursive;
-    font-size: 3rem !important; 
-    font-weight: 700;
-    margin-left: 0.1 !important;
+    font-family: 'Cookie', cursive;
+    font-size: 3rem !important;
+    font-weight: 400 !important;
+    margin-left: 0.1rem !important;
     background: linear-gradient(270deg, #a7588d, #f8bbd0, #e1bee7, #a7588d);
     background-size: 600% 600%;
     -webkit-background-clip: text;
@@ -307,4 +430,283 @@ button[type="submit"]:hover {
     animation: gradienteMovimiento 8s ease infinite, efecto3D 6s ease-in-out infinite;
     display: inline-block;
     perspective: 1000px;
+    letter-spacing: 1px;
+}
+
+/* --- SECCIÓN SOBRE MÍ INTERACTIVA --- */
+/* Contenedor principal: flex para imagen y texto lado a lado */
+.sobre-mi-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* espacio entre imagen y texto */
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+/* Texto dentro de sección sobre mí */
+.sobre-mi-texto {
+    flex: 2;
+}
+
+.proyecto {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+body.dark-mode .proyecto {
+    background: rgba(70, 50, 80, 0.4);
+    border: 1px solid rgba(150, 100, 140, 0.6);
+    color: #e1bee7;
+    box-shadow: 0 5px 10px rgba(167, 88, 141, 0.4);
+}
+/*---*/
+.proyecto:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+body.dark-mode .proyecto:hover {
+    box-shadow: 0 15px 30px rgba(220, 180, 220, 0.7);
+}
+
+.proyecto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 1rem 0;
+    transition: transform 0.3s ease;
+}
+
+.proyecto:hover img {
+    transform: scale(1.05);
+}
+
+/* Párrafos con tamaño mayor y transición para efectos */
+.texto-interactivo p {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en párrafos: desplazar hacia derecha y cambiar color */
+.parrafo-hover:hover {
+    transform: translateX(10px);
+    color: #e276b3; /* rosa */
+    cursor: default;
+}
+
+/* Texto destacado: negrita y color morado */
+.destacado {
+    font-weight: bold;
+    color: #a7588d;
+    font-size: 1.1em;
+}
+
+/* Palabras con color rosa y efecto hover */
+.palabra-color {
+    color: #e276b3;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.palabra-color:hover {
+    background: linear-gradient(45deg, #a7588d, #e276b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.1);
+}
+
+/* --- Tarjetas de datos curiosos --- */
+.datos-curiosos {
+    margin-top: 3rem;
+}
+
+/* Título de datos curiosos con color morado oscuro */
+.datos-curiosos h3 {
+    color: #5c345d;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .datos-curiosos h3 {
+    color: #b583b6;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor de tarjetas: flex, gap y wrap para responsividad */
+.tarjetas-datos {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Cada tarjeta individual: tamaño fijo y perspectiva para efecto 3D */
+.tarjeta-dato {
+    width: 120px;
+    height: 120px;
+    perspective: 1000px;
+    cursor: pointer; /* para que se note que es clickeable */
+}
+
+/* Contenedor interno para el flip: transición y preserva 3D */
+.tarjeta-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Cuando la tarjeta tiene la clase flip, gira 180 grados en Y */
+.tarjeta-dato.flip .tarjeta-inner {
+    transform: rotateY(180deg);
+}
+
+/* Frente y reverso de la tarjeta: posición absoluta, tamaño completo, backface oculto */
+.tarjeta-front, .tarjeta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Frente de la tarjeta: fondo degradado rosa suave */
+.tarjeta-front {
+    background: linear-gradient(135deg, #f8bbd0, #e1bee7);
+}
+body.dark-mode .tarjeta-front {
+    background: linear-gradient(135deg, #a286a8, #8a6492);
+}
+
+/* Reverso de la tarjeta: fondo más fuerte, texto blanco, rotado 180 para el flip */
+.tarjeta-back {
+    background: linear-gradient(135deg, #a7588d, #e276b3);
+    color: white;
+    transform: rotateY(180deg);
+}
+body.dark-mode .tarjeta-back {
+    background: linear-gradient(135deg, #7b4c8d, #6f4879);
+    color: white;
+    transform: rotateY(180deg);
+}
+/* Emoji dentro de las tarjetas: tamaño grande y margen inferior */
+.emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Texto de la tarjeta: tamaño pequeño, sin márgenes, negrita */
+.tarjeta-dato p {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* --- Contenedor de imagen para sección sobre mí --- */
+.imagen-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Placeholder de imagen: tamaño fijo */
+.imagen-placeholder {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+/* Marco redondeado para la imagen, con degradado, sombra y efecto hover */
+.imagen-marco {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #a7588d;
+    position: relative;
+    background: linear-gradient(135deg, #f8bbd0, #e1bee7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(167, 88, 141, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en el marco: escala y sombra más fuerte */
+.imagen-marco:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(167, 88, 141, 0.4);
+}
+
+/* Imagen propiamente dicha: ocupa todo, objeto cubre sin deformar */
+.mi-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto alternativo para placeholder */
+.placeholder-content {
+    text-align: center;
+    color: #5c345d;
+}
+
+.emoji-grande {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.placeholder-content p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* --- Decoraciones alrededor de la imagen --- */
+.imagen-decoracion {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* no interfiere con el mouse */
+}
+
+
+
+/* Animación float: sube y baja con giro */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* --- Responsive para sección sobre mí --- */
+@media (max-width: 768px) {
+    .sobre-mi-container {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .imagen-placeholder {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .tarjetas-datos {
+        justify-content: center;
+    }
 }

@@ -7,17 +7,15 @@
     
     <!-- ESTILOS Y FUENTES -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-    <link rel="icon" href="imagenes/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- MODO OSCURO -->
-    <script>
-        function toggleModo() {
-            document.body.classList.toggle("dark-mode");
-        }
-    </script>
+
 </head>
 
 <body>
@@ -30,6 +28,7 @@
                 <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#cv">CV</a></li> 
                 <li><button id="modo-btn" onclick="toggleModo()">🌙</button></li>
             </ul>
         </nav>
@@ -39,8 +38,72 @@
     <main>
         <!-- Sección Sobre mí -->
         <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p>¡Hola! Soy Julieta, desarrolladora web en formación. Me apasiona crear sitios accesibles, modernos y bien diseñados. Este portfolio muestra algunos de los proyectos que realicé y cómo podés contactarme.</p>
+            <div class="sobre-mi-container">
+                <div class="sobre-mi-texto">
+                    <h2 class="titulo-bounce">Sobre mí</h2>
+                    <div class="texto-interactivo">
+                        <p class="parrafo-hover">¡Hola! Soy <span class="destacado">Julieta</span> 👋</p>
+                        <p class="parrafo-hover">Desarrolladora web en formación con pasión por crear sitios <span class="palabra-color">accesibles</span>, <span class="palabra-color">modernos</span> y <span class="palabra-color">bien diseñados</span>.</p>
+                        <p class="parrafo-hover">Me encanta resolver problemas con código y hacer que las ideas cobren vida en la web ✨</p>
+                    </div>
+                    
+                    <!-- Datos curiosos interactivos -->
+                    <div class="datos-curiosos">
+                        <h3>Algunos datos sobre mí:</h3>
+                        <div class="tarjetas-datos">
+                            <div class="tarjeta-dato" onclick="this.classList.toggle('flip')">
+                                <div class="tarjeta-inner">
+                                    <div class="tarjeta-front">
+                                        <span class="emoji">🎨</span>
+                                        <p>Diseño</p>
+                                    </div>
+                                    <div class="tarjeta-back">
+                                        <p>Me encanta crear interfaces bonitas y funcionales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tarjeta-dato" onclick="this.classList.toggle('flip')">
+                                <div class="tarjeta-inner">
+                                    <div class="tarjeta-front">
+                                        <span class="emoji">💻</span>
+                                        <p>Código</p>
+                                    </div>
+                                    <div class="tarjeta-back">
+                                        <p>Cada línea de código es un nuevo aprendizaje</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tarjeta-dato" onclick="this.classList.toggle('flip')">
+                                <div class="tarjeta-inner">
+                                    <div class="tarjeta-front">
+                                        <span class="emoji">🚀</span>
+                                        <p>Futuro</p>
+                                    </div>
+                                    <div class="tarjeta-back">
+                                        <p>Siempre buscando nuevos desafíos y tecnologías</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Espacio para tu imagen -->
+                <div class="imagen-container">
+                    <div class="imagen-placeholder">
+                        <div class="imagen-marco">
+                            <img src="foto1.jpeg" alt="Foto de Julieta" class="mi-imagen">
+                        </div>
+                        <div class="imagen-decoracion">
+                            <div class="circulo circulo-1"></div>
+                            <div class="circulo circulo-2"></div>
+                            <div class="circulo circulo-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Sección Habilidades -->
@@ -56,21 +119,28 @@
 
         <!-- Sección Proyectos -->
         <section id="proyectos">
-            <h2>Proyectos</h2>
+        <h2>Proyectos</h2>
+        <div class="filtros-proyectos">
+            <button onclick="filtrarProyectos('todos')">Todos</button>
+            <button onclick="filtrarProyectos('html')">HTML</button>
+            <button onclick="filtrarProyectos('js')">JavaScript</button>
+        </div>
 
-            <article class="proyecto">
-                <h3>Proyecto 1: Calculadora Web</h3>
-                <p>Una calculadora funcional hecha con HTML, CSS y JavaScript. Permite realizar operaciones básicas de forma simple.</p>
-                <img src="img/calculadora.png" alt="Captura de la calculadora">
-                <a href="https://github.com/usuario/calculadora" target="_blank">Ver en GitHub</a>
+        <div class="galeria-proyectos">
+            <article class="proyecto" data-tecnologia="html">
+            <span class="etiqueta-estado">Publicado</span>
+            <h3>Portfolio Personal</h3>
+            <p>Hecho con HTML y CSS, incluye animaciones.</p>
+            <img src="img/portfolio.png" alt="Captura del portfolio">
             </article>
 
-            <article class="proyecto">
-                <h3>Proyecto 2: Página de Recetas</h3>
-                <p>Un sitio donde se pueden buscar recetas por ingrediente. Usé HTML, CSS y JSON.</p>
-                <img src="img/recetas.png" alt="Captura del sitio de recetas">
-                <a href="https://github.com/usuario/recetas" target="_blank">Ver en GitHub</a>
+            <article class="proyecto" data-tecnologia="js">
+            <span class="etiqueta-estado">En desarrollo</span>
+            <h3>Juego Web</h3>
+            <p>Videojuego simple en JavaScript puro.</p>
+            <img src="img/juego.gif" alt="GIF del juego funcionando">
             </article>
+        </div>
         </section>
 
         <!-- Sección CV -->
@@ -81,38 +151,53 @@
 
         <!-- Sección Contacto -->
         <section id="contacto">
-            <h2>Contacto</h2>
-            <form action="mailto:tuemail@example.com" method="POST" enctype="text/plain">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+        <h2>Contacto</h2>
+        <form id="contact-form" onsubmit="mostrarMensajeExito(); return false;">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
 
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" rows="5" required></textarea>
 
-                <button type="submit">Enviar</button>
-            </form>
+            <button type="submit" id="enviar-btn">Enviar ❤️</button>
+        </form>
 
-            <div class="redes">
-                <p>O también podés contactarme por:</p>
-                <ul>
-                    <li><a href="mailto:tuemail@example.com">Email</a></li>
-                    <li><a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://github.com/tuusuario" target="_blank">GitHub</a></li>
-                </ul>
-            </div>
+        <div id="mensaje-exito" class="oculto">¡Gracias por tu mensaje! 💌</div>
         </section>
     </main>
-
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="modo.js"></script>
 </body>
+    <script>
+        function toggleModo() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+    <script>
+        const frases = [
+            "Cree en vos 💫",
+            "Todo comienza con una línea de código 💻",
+            "Sos capaz de más de lo que pensás 🚀",
+            "La web es tu lienzo 🎨"
+        ];
+
+        const titulo = document.querySelector('.nombre-animado');
+        const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+        titulo.insertAdjacentHTML('afterend', `<p class="frase-inspiradora">${fraseAleatoria}</p>`);
+
+        function filtrarProyectos(tecnologia) {
+            document.querySelectorAll('.proyecto').forEach(p => {
+            p.style.display = (tecnologia === 'todos' || p.dataset.tecnologia === tecnologia) ? 'block' : 'none';
+            });
+        }
+
+        function mostrarMensajeExito() {
+            const mensaje = document.getElementById("mensaje-exito");
+            mensaje.classList.remove("oculto");
+            mensaje.classList.add("visible");
+            setTimeout(() => mensaje.classList.add("oculto"), 4000);
+        }
+        </script>
+
 </html>
